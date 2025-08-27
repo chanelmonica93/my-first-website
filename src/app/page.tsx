@@ -1,152 +1,40 @@
-"use client";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-  const [tasks, setTasks] = useState(['Learn HTML basics', 'Practice CSS styling']);
-  const [newTask, setNewTask] = useState('');
-
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="text-center sm:text-left max-w-2xl mb-8">
-          <h2 className="text-2xl font-bold mb-4">About Me</h2>
-          <p className="text-lg">
-            Hello, my name is Brittney Anderson and I'm a junior web developer and I am also working on a Forensic CyberSecurity major.
-          </p>
-        </div>
-
-        <div className="text-center sm:text-left max-w-2xl mb-8">
-          <h2 className="text-2xl font-bold mb-4">My Learning Journey</h2>
-          <p className="text-lg mb-4">
-            Here are the technologies I'm learning:
-          </p>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded mr-2 mb-2 hover:bg-blue-600"
-            onClick={() => alert('I am learning HTML!')}
-          >
-            HTML
-          </button>
-          <button
-            className="bg-green-500 text-white px-4 py-2 rounded mr-2 mb-2 hover:bg-green-600"
-            onClick={() => alert('I am learning CSS!')}
-          >
-            CSS
-          </button>
-          <button
-            className="bg-purple-500 text-white px-4 py-2 rounded mr-2 mb-2 hover:bg-purple-600"
-            onClick={() => alert('I am learning JavaScript!')}
-          >
-            JavaScript
-          </button>
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded mr-2 mb-2 hover:bg-red-600"
-            onClick={() => alert('I am studying Cybersecurity!')}
-          >
-            Cybersecurity
-          </button>
-        </div>
-
-        <div className="text-center sm:text-left max-w-2xl mb-8">
-          <h2 className="text-2xl font-bold mb-4">Learning Progress Counter</h2>
-          <p className="text-lg mb-4">
-            Track your learning sessions:
-          </p>
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
-            <div className="text-4xl font-bold text-center mb-4">{count}</div>
-            <div className="text-center text-gray-600 dark:text-gray-300 mb-4">
-              Learning Sessions Completed
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
+      {/* Header/Navigation */}
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <div className="flex items-center">
+              <h1 className="text-2xl font-bold text-gray-900">Glow Esthetics</h1>
             </div>
-            <div className="flex gap-2 justify-center">
-    <button
-      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      onClick={() => setCount(count + 1)}
-    >
-      Add Session
-    </button>
-    <button
-      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-      onClick={() => setCount(count - 1)}
-    >
-      Remove Session
-    </button>
-    <button
-      className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-      onClick={() => setCount(0)}
-    >
-      Reset
-    </button>
-  </div>
-          </div>
-        </div>
-
-        <div className="text-center sm:text-left max-w-2xl mb-8">
-          <h2 className="text-2xl font-bold mb-4">My Learning Tasks</h2>
-          <p className="text-lg mb-4">
-            Keep track of what you want to learn:
-          </p>
-          
-          <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
-            {/* Task input form */}
-            <div className="mb-4">
-              <input
-                type="text"
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                placeholder="Enter a new learning task..."
-                className="w-full p-3 border rounded-lg text-black"
-              />
-              <button
-                onClick={() => {
-                  if (newTask.trim()) {
-                    setTasks([...tasks, newTask]);
-                    setNewTask('');
-                  }
-                }}
-                className="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-              >
-                Add Task
+            <div className="hidden md:flex space-x-8">
+              <a href="#services" className="text-gray-700 hover:text-pink-600">Services</a>
+              <a href="#about" className="text-gray-700 hover:text-pink-600">About</a>
+              <a href="#contact" className="text-gray-700 hover:text-pink-600">Contact</a>
+              <button className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700">
+                Book Now
               </button>
             </div>
-
-            {/* Task list */}
-            <div className="space-y-2">
-              {tasks.map((task, index) => (
-                <div key={index} className="flex items-center justify-between bg-white dark:bg-gray-700 p-3 rounded">
-                  <span>{task}</span>
-                  <button
-                    onClick={() => setTasks(tasks.filter((_, i) => i !== index))}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm"
-                  >
-                    Delete
-                  </button>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            Professional Skincare & Beauty Treatments
+          </h2>
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Transform your skin with our expert esthetician services. From relaxing facials to advanced treatments, 
+            we help you achieve your healthiest, most radiant complexion.
+          </p>
+          {/* TODO(human) - Add hero call-to-action buttons here */}
+        </div>
+      </section>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
